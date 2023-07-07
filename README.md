@@ -1,26 +1,14 @@
-# Next.js + Jest
+# Weather App
 
-This example shows how to configure Jest to work with Next.js.
-
-This includes Next.js' built-in support for Global CSS, CSS Modules and TypeScript.
+A weather app built with Typescript, NextJS and Tailwindcss
 
 ## How to Use
 
-Quickly get started using [Create Next App](https://github.com/vercel/next.js/tree/canary/packages/create-next-app#readme)!
+1. clone the project
+2. run yarn
+3. run yarn dev
 
-In your terminal, run the following command:
-
-```bash
-npx create-next-app --example with-jest with-jest-app
-```
-
-```bash
-yarn create next-app --example with-jest with-jest-app
-```
-
-```bash
-pnpm create next-app --example with-jest with-jest-app
-```
+Live Demo Site: https://weather-app-lyart-six-80.vercel.app/
 
 ## Run Jest Tests
 

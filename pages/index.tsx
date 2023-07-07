@@ -22,8 +22,6 @@ import {
 import { useWeatherData } from "@/hooks/useWeatherData";
 import clsx from "clsx";
 
-// TODO: make the chart responsive
-
 type HomeProps = {
   initialForecastWeatherData: ForecastWeatherData;
   initialCity: string;
@@ -35,6 +33,9 @@ type SavedData = {
   time: string;
   temperature: string;
 };
+
+const CHART_WIDTH = 600;
+const CHART_HEIGHT = 250;
 
 const Home: FC<HomeProps> = ({
   initialForecastWeatherData,
@@ -74,7 +75,7 @@ const Home: FC<HomeProps> = ({
   const toggleShowData = () => setShouldShowData((prev) => !prev);
 
   return (
-    <div>
+    <div className="">
       <Head>
         <title>Weather App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -100,26 +101,26 @@ const Home: FC<HomeProps> = ({
           Current Temperature: {currentTemperature} °C
         </div>
 
-        <div className="overflow-scroll max-w-[900px] mt-8">
-          <ResponsiveContainer minWidth={600}>
-            <LineChart
-              width={730}
-              height={250}
-              data={convertPastWeatherDataToChartUsable(pastWeatherData)}
-              id="past-weather-chart"
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <YAxis
-                tick={{ stroke: "white" }}
-                domain={["dataMin - 3", "dataMax + 3"]}
-              />
-              <XAxis dataKey="date" tick={{ stroke: "white" }} />
-              <Tooltip />
-              <Line type="monotone" dataKey="minTemp" stroke="#8884d8" />
-              <Line type="monotone" dataKey="maxTemp" stroke="#82ca9d" />
-              <Legend />
-            </LineChart>
-          </ResponsiveContainer>
+        <div className="overflow-scroll mt-8">
+          <div className=" min-w-[650px] h-[250px] md:h-[400px] max-w-[900px] m-auto">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart
+                data={convertPastWeatherDataToChartUsable(pastWeatherData)}
+                id="past-weather-chart"
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <YAxis
+                  tick={{ stroke: "white" }}
+                  domain={["dataMin - 3", "dataMax + 3"]}
+                />
+                <XAxis dataKey="date" tick={{ stroke: "white" }} />
+                <Tooltip />
+                <Line type="monotone" dataKey="minTemp" stroke="#8884d8" />
+                <Line type="monotone" dataKey="maxTemp" stroke="#82ca9d" />
+                <Legend />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         </div>
         <div>
           <div className="mt-4 text-xs opacity-8 italic">
